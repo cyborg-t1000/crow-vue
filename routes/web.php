@@ -13,20 +13,29 @@ use App\Http\Controllers\FormsController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MiscellaneousController;
-use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\OrderController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'auth'])->name('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('orders', [OrderController::class, 'orders'])->name('orders');
+    Route::get('orders/{order_id}', [OrderController::class, 'detail'])->name('orders.detail');
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 // Main Page Route
 Route::get('/', [DashboardController::class, 'dashboardEcommerce'])->name('dashboard-ecommerce');
 
@@ -238,3 +247,4 @@ Route::get('/maps/leaflet', [ChartsController::class, 'maps_leaflet'])->name('ma
 
 // locale Route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
+});

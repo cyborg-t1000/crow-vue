@@ -20,6 +20,12 @@
       ]
     },
     {
+      "url": "orders",
+      "name": "Orders",
+      "icon": "circle",
+      "slug": "orders"
+    },
+    {
       "name": "Apps",
       "icon": "package",
       "dropdown": "1",

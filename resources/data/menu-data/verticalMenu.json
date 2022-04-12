@@ -21,6 +21,12 @@
         }
       ]
     },
+    {
+      "url": "orders",
+      "name": "Orders",
+      "icon": "circle",
+      "slug": "orders"
+    },
 
     {
       "navheader": "Apps & Pages",
